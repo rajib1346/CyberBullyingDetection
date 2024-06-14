@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 
 # Load the trained model. (Pickle file)
-model = pickle.load(open('C:/Users/acer/Cyber/models/model.pkl', 'rb'))
+model = pickle.load(open('models/model.pkl', 'rb'))
 
 # Define the route to be home.
 @app.route('/')
