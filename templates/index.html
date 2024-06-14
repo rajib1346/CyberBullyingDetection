@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Bullying Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .timer {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 100px;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        .awareness {
+            background: #f7e1a1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .awareness h4 {
+            color: #e44d26;
+        }
+        .awareness p {
+            color: #333;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+    <script>
+        function startTime() {
+            const today = new Date();
+            let h = today.getUTCHours() + 6; // Convert to BST (UTC + 6)
+            let m = today.getUTCMinutes();
+            let s = today.getUTCSeconds();
+            let session = "AM";
+            if (h == 0) {
+                h = 12;
+            }
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('timer').innerHTML = h + ":" + m + ":" + s + " " + session;
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
+</head>
+<body onload="startTime()">
+    <div class="container">
+        <div id="timer" class="timer"></div>
+        <img src="static/img1.jpg" alt="Logo" class="logo">
+        <h2 class="text-center">Cyber Bullying Detection</h2>
+        <div class="awareness">
+            <h4>Awareness about Cyber Bullying</h4>
+            <p>Cyberbullying is a serious issue that can have severe consequences for those affected. It involves the use of digital platforms to harass, threaten, or humiliate individuals. It is important to recognize and report cyberbullying to help create a safer online environment.</p>
+        </div>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="news">Enter Text:</label>
+                <textarea class="form-control" id="news" name="news" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+        <div class="footer">© Rajib Kumar Halder</div>
+    </div>
+</body>
+</html>
