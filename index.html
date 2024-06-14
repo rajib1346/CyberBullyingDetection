@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberbullying Detection</title>
+</head>
+<body>
+    <h2>Enter Tweet to Check for Cyberbullying</h2>
+    <form action="/" method="POST">
+        <label for="tweet">Tweet:</label>
+        <input type="text" id="tweet" name="tweet" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if prediction is not none %}
+        <h3>Prediction Result:</h3>
+        <p>{{ 'Cyberbullying Detected' if prediction == 1 else 'No Cyberbullying Detected' }}</p>
+    {% endif %}
+</body>
+</html>
